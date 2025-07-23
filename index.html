@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Vegetarian Menu</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a8e6cf 0%, #dcedc1 50%, #ffd3a5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .menu-container {
+            background: white;
+            width: 8.5in;
+            min-height: 11in;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            padding: 50px 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 50px;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 32px;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f5e8 100%);
+            border-radius: 15px;
+            border-left: 5px solid #56ab2f;
+        }
+        
+        .dish {
+            background: linear-gradient(135deg, #f8fff8 0%, #fff 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .dish:hover {
+            transform: translateY(-5px);
+        }
+        
+        .dish-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .dish-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-right: 25px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .starter1 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .starter2 { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+        .starter3 { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .main1 { background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%); }
+        .main2 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .main3 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        
+        .dish-name {
+            font-family: 'Fredoka One', cursive;
+            font-size: 26px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .dish-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #5d6d7e;
+            margin-bottom: 25px;
+        }
+        
+        .ingredients-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 18px;
+            color: #56ab2f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ingredients {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .ingredient {
+            background: rgba(86, 171, 47, 0.1);
+            padding: 10px 15px;
+            border-radius: 12px;
+            font-size: 14px;
+            color: #34495e;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .recipe-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 18px;
+            color: #56ab2f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .recipe {
+            background: rgba(86, 171, 47, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #56ab2f;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 15px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .step-text {
+            color: #34495e;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+        
+        .footer h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .footer p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(86, 171, 47, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .print-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .menu-container {
+                box-shadow: none;
+                border-radius: 0;
+                width: auto;
+                min-height: auto;
+            }
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="menu-container">
+        <div class="header">
+            <h1>🌱 Garden Fresh Menu</h1>
+            <div class="subtitle">Healthy Vegetarian Delights</div>
+        </div>
+        
+        <div class="content">
+            <!-- STARTERS -->
+            <div class="section">
+                <div class="section-title">🥗 Appetizing Starters</div>
+                
+                <div class="dish">
+                    <div class="dish-header">
+                        <div class="dish-icon starter1">🥑</div>
+                        <div>
+                            <div class="dish-name">Mediterranean Stuffed Avocados</div>
+                            <div class="dish-description">
+                                Creamy avocados filled with quinoa, cherry tomatoes, cucumber, and feta cheese, drizzled with lemon-herb vinaigrette.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ingredients-title">🛒 Ingredients</div>
+                    <div class="ingredients">
+                        <div class="ingredient">🥑 2 ripe avocados</div>
+                        <div class="ingredient">🌾 1/2 cup cooked quinoa</div>
+                        <div class="ingredient">🍅 1/2 cup cherry tomatoes, diced</div>
+                        <div class="ingredient">🥒 1/4 cup cucumber, diced</div>
+                        <div class="ingredient">🧀 1/4 cup crumbled feta cheese</div>
+                        <div class="ingredient">🍋 2 tbsp fresh lemon juice</div>
+                        <div class="ingredient">🌿 2 tbsp fresh herbs (parsley, mint)</div>
+                        <div class="ingredient">🫒 2 tbsp extra virgin olive oil</div>
+                    </div>
+                    
+                    <div class="recipe-title">👨‍🍳 Recipe Steps</div>
+                    <div class="recipe">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Cut avocados in half, remove pits, and scoop out some flesh to create bowls</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Mix quinoa, tomatoes, cucumber, feta, and fresh herbs in a bowl</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Whisk together lemon juice and olive oil for the dressing</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Fill avocado halves with the quinoa mixture and drizzle with dressing</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dish">
+                    <div class="dish-header">
+                        <div class="dish-icon starter2">🍄</div>
+                        <div>
+                            <div class="dish-name">Crispy Mushroom Bruschetta</div>
+                            <div class="dish-description">
+                                Toasted sourdough topped with sautéed mixed mushrooms, garlic, fresh thyme, and a drizzle of truffle oil.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ingredients-title">🛒 Ingredients</div>
+                    <div class="ingredients">
+                        <div class="ingredient">🍞 4 slices sourdough bread</div>
+                        <div class="ingredient">🍄 2 cups mixed mushrooms, sliced</div>
+                        <div class="ingredient">🧄 3 cloves garlic, minced</div>
+                        <div class="ingredient">🌿 2 tbsp fresh thyme leaves</div>
+                        <div class="ingredient">🫒 3 tbsp olive oil</div>
+                        <div class="ingredient">✨ 1 tsp truffle oil</div>
+                        <div class="ingredient">🧂 Salt and black pepper to taste</div>
+                        <div class="ingredient">🌿 Fresh parsley for garnish</div>
+                    </div>
+                    
+                    <div class="recipe-title">👨‍🍳 Recipe Steps</div>
+                    <div class="recipe">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Toast sourdough slices until golden brown and crispy</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Heat olive oil and sauté mushrooms with garlic and thyme until golden</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Season mushrooms with salt, pepper, and fresh herbs</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Top toasted bread with mushroom mixture and drizzle with truffle oil</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dish">
+                    <div class="dish-header">
+                        <div class="dish-icon starter3">🥕</div>
+                        <div>
+                            <div class="dish-name">Rainbow Hummus Platter</div>
+                            <div class="dish-description">
+                                Three colorful hummus varieties (classic, beetroot, and turmeric) served with fresh vegetables and warm pita bread.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ingredients-title">🛒 Ingredients</div>
+                    <div class="ingredients">
+                        <div class="ingredient">🫘 2 cups cooked chickpeas</div>
+                        <div class="ingredient">🥜 3 tbsp tahini</div>
+                        <div class="ingredient">🍋 3 tbsp fresh lemon juice</div>
+                        <div class="ingredient">🧄 2 cloves garlic</div>
+                        <div class="ingredient">🥕 1 medium roasted beetroot</div>
+                        <div class="ingredient">⚡ 1 tsp turmeric powder</div>
+                        <div class="ingredient">🥕 Carrot sticks</div>
+                        <div class="ingredient">🥒 Cucumber slices</div>
+                    </div>
+                    
+                    <div class="recipe-title">👨‍🍳 Recipe Steps</div>
+                    <div class="recipe">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Blend chickpeas, tahini, lemon juice, and garlic to make classic hummus</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Divide hummus into three portions</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Blend roasted beetroot into one portion, turmeric into another</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Arrange three hummus colors on platter with fresh vegetables</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MAIN COURSES -->
+            <div class="section">
+                <div class="section-title">🍽️ Satisfying Main Courses</div>
+                
+                <div class="dish">
+                    <div class="dish-header">
+                        <div class="dish-icon main1">🍆</div>
+                        <div>
+                            <div class="dish-name">Mediterranean Eggplant Moussaka</div>
+                            <div class="dish-description">
+                                Layers of roasted eggplant with rich lentil-tomato sauce and creamy béchamel, baked to golden perfection.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ingredients-title">🛒 Ingredients</div>
+                    <div class="ingredients">
+                        <div class="ingredient">🍆 2 large eggplants, sliced</div>
+                        <div class="ingredient">🌾 1 cup red lentils</div>
+                        <div class="ingredient">🍅 2 cups crushed tomatoes</div>
+                        <div class="ingredient">🧅 1 large onion, diced</div>
+                        <div class="ingredient">🧄 4 cloves garlic, minced</div>
+                        <div class="ingredient">🥛 2 cups milk</div>
+                        <div class="ingredient">🌾 3 tbsp flour</div>
+                        <div class="ingredient">🧀 1/2 cup grated cheese</div>
+                    </div>
+                    
+                    <div class="recipe-title">👨‍🍳 Recipe Steps</div>
+                    <div class="recipe">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Salt eggplant slices, let drain 30 mins, then roast until tender</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Cook lentils with tomatoes, onion, and garlic until thick</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Make béchamel by whisking flour into milk, cook until thick</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Layer eggplant, lentil sauce, béchamel, and bake 45 minutes</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dish">
+                    <div class="dish-header">
+                        <div class="dish-icon main2">🍝</div>
+                        <div>
+                            <div class="dish-name">Butternut Squash Sage Pasta</div>
+                            <div class="dish-description">
+                                Whole wheat penne with roasted butternut squash, crispy sage, toasted pine nuts, and parmesan.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ingredients-title">🛒 Ingredients</div>
+                    <div class="ingredients">
+                        <div class="ingredient">🍝 400g whole wheat penne</div>
+                        <div class="ingredient">🎃 1 butternut squash, cubed</div>
+                        <div class="ingredient">🌿 20 fresh sage leaves</div>
+                        <div class="ingredient">🥜 1/2 cup pine nuts</div>
+                        <div class="ingredient">🧀 1/2 cup parmesan, grated</div>
+                        <div class="ingredient">🧄 3 cloves garlic, sliced</div>
+                        <div class="ingredient">🫒 4 tbsp olive oil</div>
+                        <div class="ingredient">🧂 Salt and pepper to taste</div>
+                    </div>
+                    
+                    <div class="recipe-title">👨‍🍳 Recipe Steps</div>
+                    <div class="recipe">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Roast butternut squash cubes with olive oil until caramelized</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Cook pasta according to package directions until al dente</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Fry sage leaves until crispy, toast pine nuts in same pan</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Toss pasta with squash, sage, pine nuts, and parmesan</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dish">
+                    <div class="dish-header">
+                        <div class="dish-icon main3">🌾</div>
+                        <div>
+                            <div class="dish-name">Buddha Bowl with Tahini Dressing</div>
+                            <div class="dish-description">
+                                A nourishing bowl with quinoa, roasted vegetables, chickpeas, avocado, and microgreens with creamy tahini dressing.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="ingredients-title">🛒 Ingredients</div>
+                    <div class="ingredients">
+                        <div class="ingredient">🌾 1 cup quinoa</div>
+                        <div class="ingredient">🥕 2 carrots, sliced</div>
+                        <div class="ingredient">🥦 1 cup broccoli florets</div>
+                        <div class="ingredient">🫘 1 cup cooked chickpeas</div>
+                        <div class="ingredient">🥑 1 avocado, sliced</div>
+                        <div class="ingredient">🌱 1 cup microgreens</div>
+                        <div class="ingredient">🥜 3 tbsp tahini</div>
+                        <div class="ingredient">🍋 2 tbsp lemon juice</div>
+                    </div>
+                    
+                    <div class="recipe-title">👨‍🍳 Recipe Steps</div>
+                    <div class="recipe">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-text">Cook quinoa according to package directions</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-text">Roast carrots and broccoli until tender, season chickpeas and roast</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-text">Whisk tahini with lemon juice and water to make dressing</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-text">Arrange all components in bowls and drizzle with tahini dressing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3>🌱 Fresh • Healthy • Delicious 🌱</h3>
+            <p>All dishes made with fresh, organic ingredients • Nutritious and satisfying • Perfect for your dinner party</p>
+        </div>
+    </div>
+</body>
+</html>
